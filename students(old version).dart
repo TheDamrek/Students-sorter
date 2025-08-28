@@ -1,14 +1,15 @@
-class Student{
+
+ class Student{
   String name;
   double grade;
 
   Student(this.name,this.grade);
 
-    bool HasPassed() {
+    bool hasPassed() {
 if (grade >= 10){
   return true;
 }
-if (10 >= grade){
+else{
   return false;
 }
     }
@@ -24,21 +25,15 @@ void main() {
        Student('Mohamed', 9),
     ];
     
-    double totalGrade = 0;
-    for (var i = 0; i < students.length; i++) {
-       displayStudent(student);
-       avg = avg + student.grade;
+  double totalGrade = 0;
 
-       
-    }
+  for (var i = 0; i < students.length; i++) {
+    var student = students[i];
+    String status = student.hasPassed() ? 'Passed' : 'Failed';
+    print('Name: ${student.name}, Grade: ${student.grade} → $status');
+    totalGrade += student.grade;
+  }
 
- String status = student.HasPassed()? 'Passed' : 'Failed';
-        print('Name: ${student.name}, Grade: ${student.grade} → $status');
-        totalGrade += student.grade;
-
-  
-
-
-
-  
-}
+  double avg = totalGrade / students.length;
+  print('Average grade: $avg');
+} 
